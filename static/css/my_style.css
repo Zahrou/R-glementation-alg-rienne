@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,700");
+
+
+hr {
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 1px;
+}
+
+.vl {
+  border-left: 6px solid green;
+  height: 500px;
+  position: absolute;
+  left: 50%;
+  margin-left: -3px;
+  top: 0;
+}
+
+
+.mt-5 {
+  color: red
+}
+
+.uniquement {
+  color: #5e6166;
+  font-family: sans-serif;
+
+
+}
+.uniquement p {
+  padding-left: 10px;
+}
+
+.uniquement a {
+  color: #4ef4a7;
+  font-weight: bolder;
+}
+
+
+b {
+  color: #5e6166;
+  font-family: sans-serif;
+}
+
+.jumbotron {
+    text-align: center;
+    padding-left: 400px;
+    padding-top:0px;
+    margin-top: 0.8em;
+    height:auto;
+    sticky: top;
+    background-image: url('static/images/jo.jpg');
+}
+
+.jumbotron h1{
+  text-transform: uppercase;
+  color: #5e6166;
+  font-family: serif;
+  }
+
+.jumbotron form{
+    margin-left: 300px;
+    width: 800px;
+    color: #5e6166;
+    font-family: serif;
+}
+
+.jumbotron input{
+    width: 400px;
+    padding: 15px 22px;
+    margin: 10px 5px;
+    box-sizing: border-box;
+}
+
+.jumbotron h1{
+  text-transform: uppercase;
+  color: #5e6166;
+  font-family: serif;
+}
+
+.jumbotron h4{
+  color: #5e6166;
+  font-family: serif;
+}
+
+.well{
+  background-color: #ffffff;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  margin-top: 0.1em;
+
+}
+
+
+
+@my-button {
+    color: :black;
+}

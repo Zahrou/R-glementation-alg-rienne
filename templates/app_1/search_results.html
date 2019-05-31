@@ -1,0 +1,103 @@
+{% extends "app_1/base.html" %}
+{% block body_block %}
+{% load custom_filters %}
+    <div class="container">
+      {% if query %}
+      <h3>Résultas de recherche pour "{{query}}"</h3>
+        <p></p>
+        {% if lis %}
+        <h4> <u> Lois </u> </h4>
+        {% for l in lis %}
+            <b><em>Loi n {{l.num}} du {{l.date|french_date}}</em></b>
+            <div class=""> {{l.objet|truncatewords:5}} </div>
+            <a href="{{l.journal.url}}"> JO n {{l.journal.num}} du {{l.journal.date|french_date}} </a>
+        <p></p>
+        {% endfor %}
+        {% endif %}
+
+        {% if ordons %}
+        <h4> <u> Ordonanaces </u> </h4>
+        {% for o in ordons %}
+            <b><em>Ordonance n {{o.num}} du {{o.date|french_date}}</em></b>
+            <div class=""> {{o.objet|truncatewords:5}} </div>
+            <a href="{{l.journal.url}}"> JO n {{o.journal.num}} du {{o.journal.date|french_date}} </a>
+        <p></p>
+        {% endfor %}
+        {% endif %}
+
+        {% if decrets_p %}
+        <h4> <u>Décrets présidentiels </u> </h4>
+        {% for dp in decrets_p %}
+            <b><em>Décret présidentiel du {{dp.date|french_date}}</em></b>
+            <div class=""> {{dp.objet|truncatewords:5}} </div>
+            <a href="{{decret.journal.url}}"> JO n {{dp.journal.num}} du {{dp.journal.date|french_date}} </a>
+        <p></p>
+        {% endfor %}
+        {% endif %}
+
+        {% if decrets_ex %}
+        <h4> <u>Décrets exécutifs </u> </h4>
+        {% for decret in decrets_ex %}
+            <b><em>Décret exécutif n {{decret.num}} du  {{decret.date|french_date}}</em></b>
+            <div class=""> {{decret.objet|truncatewords:5}} </div>
+            <a href="{{decret.journal.url}}"> JO n {{decret.journal.num}} du {{decret.journal.date|french_date}} </a>
+        <p></p>
+        {% endfor %}
+        {% endif %}
+
+        {% if arre_int %}
+        <h4> <u>Arrêtés interministériels </u> </h4>
+        {% for ari in arre_int %}
+            <b><em>Arrêté interministériel n {{ari.num}} du  {{ari.date|french_date}}</em></b>
+            <div class=""> {{ari.objet|truncatewords:5}} </div>
+            <a href="{{decret.journal.url}}"> JO n {{ari.journal.num}} du {{ari.journal.date|french_date}} </a>
+        <p></p>
+        {% endfor %}
+        {% endif %}
+
+        {% if arre %}
+        <h4> <u>Arrêtés </u> </h4>
+        {% for ar in arre %}
+            <b><em>Arrêté n {{ar.num}} du  {{ar.date|french_date}}</em></b>
+            <div class=""> {{ar.objet|truncatewords:5}} </div>
+            <a href="{{decret.journal.url}}"> JO n {{ar.journal.num}} du {{ar.journal.date|french_date}} </a>
+        <p></p>
+        {% endfor %}
+        {% endif %}
+
+        {% if deci %}
+        <h4> <u>Décisions </u> </h4>
+        {% for d in deci %}
+            <b><em>Décision n {{d.num}} du  {{d.date|french_date}}</em></b>
+            <div class=""> {{d.objet|truncatewords:5}} </div>
+            <a href="{{decret.journal.url}}"> JO n {{d.journal.num}} du {{d.journal.date|french_date}} </a>
+        <p></p>
+        {% endfor %}
+        {% endif %}
+
+        {% if decrets_ex.has_other_pages %}
+          <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+              {% if decrets_ex.has_previous %}
+                <li class="page-item"><a class="page-link" href="?page={{ decrets_ex.previous_page_number }}&q={{ request.GET.q }}">Précedant</a></li>
+                {% else %}
+
+                {% endif %}
+                {% for i in decrets_ex.paginator.page_range %}
+                {% if users.number == i %}
+                  <li class="page-item disabled"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                {% else %}
+                  <li><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                {% endif %}
+                {% endfor %}
+                {% if decrets_ex.has_next %}
+                  <li class="page-item"><a class="page-link" href="?page={{ decrets_ex.next_page_number }}&q={{ request.GET.q }}">Suivant</a></li>
+                {% else %}
+                  <li class="page-item disabled"><span>Suivant</span></li>
+                {% endif %}
+              </ul>
+            </nav>
+      {% endif %}
+    {% endif %}
+    </div>
+  {% endblock %}

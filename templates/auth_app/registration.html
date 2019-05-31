@@ -1,0 +1,23 @@
+{% extends "auth_app/base.html" %}
+{% load staticfiles %}
+
+{% block body_block %}
+
+<div class="jumbotron">
+  {% if registered %}
+  <h1>Merci de votre inscription! </h1>
+  {% else %}
+  <h3>Enregistrez-vous ici: </h3>
+  <h4>Remplir le formulaire </h4>
+  <form encrypt="multipart/form-data" method="POST">
+    {% csrf_token %}
+    {{ user_form.as_p }}
+    {{ profile_form.as_p }}
+    <input type="submit" name="" value="Enregistrer">
+
+  </form>
+
+  {% endif %}
+
+</div>
+{% endblock %}

@@ -1,0 +1,106 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,700");
+
+
+
+
+#sidebar-wrapper {
+  z-index: 1;
+  position: absolute;
+  width: 250px;
+  height: 100%;
+  overflow-y: hidden;
+  background: #f2f2f2;
+  border: ;
+
+
+
+}
+
+
+
+#page-content-wrapper {
+
+  position: absolute;
+  width: 75%;
+  background: ;
+  padding-left: 290px;
+  overflow-y: hidden;
+  border: ;
+
+}
+
+
+
+
+
+#wrapper.toggled #sidebar-wrapper{
+	width: 250px;
+}
+
+#wrapper.toggled #page-content-wrapper{
+	padding-left: 150px;
+}
+
+.stickybar {
+  position: sticky;
+
+}
+
+
+
+.current {
+
+  color: green;
+  text-decoration: underline;
+  font-family: sans-serif;
+  background-color: #e0ffec;
+  font-weight: bolder;
+
+}
+.sidebar-nav {
+
+  padding: 0px;
+  list-style: none;
+
+	position: sticky;
+
+
+}
+
+.sidebar-nav li{
+
+  text-indent: 20px;
+  line-height: 40px;
+  color: green;
+  font-size: 90%;
+
+}
+
+.text{
+
+  text-indent: 20px;
+}
+
+
+
+.sidebar-nav li a{
+
+  display: block;
+  text-decoration: none;
+  color: #5e6166;
+  font-family: sans-serif;
+
+}
+
+
+.sidebar-nav li a:hover{
+
+  background: #e6e6e6;
+  color: #5e6166;
+
+}
+
+.make-me-sticky {
+	position: sticky;
+
+}

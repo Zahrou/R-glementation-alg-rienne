@@ -1,0 +1,117 @@
+{% extends "app_1/base.html" %}
+{% load custom_filters %}
+{% load staticfiles %}
+{% block title %} {{ q }} -Recherche {% endblock %}
+
+{% block body_block %}
+
+<div id='content' class='row-fluid'>
+  {% if err_message %}
+  <div id='content' class='row-fluid'>
+    {{ err_message }}
+  </div>
+  {% endif %}
+
+{% if q %}
+    <h4 class="uniquement">Vous avez recherché:  <em><b>{{ q }}</b> </em></h4>
+    <hr>
+
+  {% if decisions %}
+
+    <!-- navigation sidebar -->
+    <div id="sidebar-wrapper">
+      <div class="well">
+		  <ul class="sidebar-nav">
+
+		      <li><a href="/search?&q={{q}}">Tous les textes: {{len_texts}}</a></li>
+            <hr>
+            {% if lois %}
+            <li ><a href="/search/lois?&q={{q}}">Lois: {{lois.count}}</a></li>
+            {% endif %}
+            {% if ordonnances %}
+            <li ><a href="/search/ordonnances?&q={{q}}">Ordonnances: {{ordonnances.count}}</a></li>
+            {% endif %}
+            {% if decrets_p %}
+            <li ><a href="/search/decrets-presidentiels?&q={{q}}">Décrets présidentiels: {{decrets_p.count}}</a></li>
+            {% endif %}
+            {% if decrets_ex %}
+            <li ><a href="/search/decrets-executifs?&q={{q}}">Décrets exécutifs: {{decrets_ex.count}}</a></li>
+            {% endif %}
+            {% if arre_int %}
+            <li ><a href="/search/arretes-interministeriels?&q={{q}}">Arrêtés interministériels: {{arre_int.count}}</a></li>
+            {% endif %}
+            {% if arretes %}
+            <li ><a href="/search/arretes?&q={{q}}">Arrêtés: {{arretes.count}}</a></li>
+            {% endif %}
+            <div class="current">
+              <li> Décisions: {{decisions.count}} </li>
+            </div>
+
+        </ul>
+        </div>
+      </div>
+
+
+    <!-- Main content -->
+
+    <div class="vl"></div>
+
+        <div id="page-content-wrapper">
+    		    <div class="container-fluid">
+    			       <div class="row">
+    			            <div class="col-lg-12">
+                          {% for text in decisions %}
+                              <div class="well">
+                                  {% if text.num == ' ' %}
+                                    <b><em>Décision du  {{text.date|french_date}}</em></b>
+                                  {% else %}
+                                    <b><em>Décision n° {{text.num}} du  {{text.date|french_date}}</em></b>
+                                  {% endif %}
+                                  <div class="uniquement">
+                                    <div>{{text.objet}}</div>
+                                    <a href="{{text.journal.url}}"> JO n° {{text.journal.num}} du {{text.journal.date|french_date}} </a>
+                                  </div>
+                              </div>
+                            {% endfor %}
+
+
+                        {% if texts.has_other_pages %}
+                          <nav aria-label="Page navigation">
+                            <ul class="pagination justify-content-center">
+                              {% if texts.has_previous %}
+                                <li class="page-item"><a class="btn btn-outline-success my-2 my-sm-0" href="?page=1&{{ parameters }}"> |<< </a></li>
+                                <li class="page-item"><a class="btn btn-outline-success my-2 my-sm-0" href="?page={{ texts.previous_page_number }}&{{ parameters }}"> < </a></li>
+                                {% else %}
+                                {% endif %}
+
+                                {% for i in page_range %}
+                                {% if texts.number == i %}
+                                  <li class="page-item btn btn-outline-success my-2 my-sm-0"><span class="my-button"> <b>{{ i }}</b>  <span class="sr-only">(current)</span></span></li>
+                                {% else %}
+                                  <li><a class="btn btn-outline-success my-2 my-sm-0" href="?page={{ i }}&{{ parameters }}">{{ i }}</a></li>
+                                {% endif %}
+                                {% endfor %}
+                                {% if texts.has_next %}
+                                  <li class="page-item"><a class="btn btn-outline-success my-2 my-sm-0" href="?page={{ texts.next_page_number }}&{{ parameters }}"> > </a></li>
+                                  <li class="page-item"><a class="btn btn-outline-success my-2 my-sm-0" href="?page={{ texts.paginator.num_pages }}&{{ parameters }}"> >>|</a></li>
+
+                                {% endif %}
+                              </ul>
+                            </nav>
+                          {% endif %}
+    			            </div>
+    			       </div>
+              {% else %}
+              <h5>Aucun texte correspondant à <em>"{{ q }}"</em> n'a été trouvé</h5>
+            {% endif %}
+    		   </div>
+    		</div>
+
+
+    {% else %}
+      <h5>Veuillez entrer un terme de recherche!</h5>
+
+
+{% endif %}
+</div>
+{% endblock %}
