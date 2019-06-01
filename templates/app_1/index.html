@@ -31,25 +31,25 @@
               </div>
               <hr>
                 {% if lois %}
-                <li ><a class="text" href="/search/lois?&q={{q}}">Lois: {{lois.count}}</a></li>
+                <li ><a class="text" href="/search/lois?&q={{q}}#all_text">Lois: {{lois.count}}</a></li>
                 {% endif %}
                 {% if ordonnances %}
-                <li ><a class="text" href="/search/ordonnances?&q={{q}}">Ordonnances: {{ordonnances.count}}</a></li>
+                <li ><a class="text" href="/search/ordonnances?&q={{q}}#all_text">Ordonnances: {{ordonnances.count}}</a></li>
                 {% endif %}
                 {% if decrets_p %}
-                <li ><a class="text" href="/search/decrets-presidentiels?&q={{q}}">Décrets présidentiels: {{decrets_p.count}}</a></li>
+                <li ><a class="text" href="/search/decrets-presidentiels?&q={{q}}#all_text">Décrets présidentiels: {{decrets_p.count}}</a></li>
                 {% endif %}
                 {% if decrets_ex %}
-                <li ><a class="text" href="/search/decrets-executifs?&q={{q}}">Décrets exécutifs: {{decrets_ex.count}}</a></li>
+                <li ><a class="text" href="/search/decrets-executifs?&q={{q}}#all_text">Décrets exécutifs: {{decrets_ex.count}}</a></li>
                 {% endif %}
                 {% if arre_int %}
-                <li ><a class="text" href="/search/arretes-interministeriels?&q={{q}}">Arrêtés interministériels: {{arre_int.count}}</a></li>
+                <li ><a class="text" href="/search/arretes-interministeriels?&q={{q}}#all_text">Arrêtés interministériels: {{arre_int.count}}</a></li>
                 {% endif %}
                 {% if arretes %}
-                <li ><a class="text" href="/search/arretes?&q={{q}}">Arrêtés: {{arretes.count}}</a></li>
+                <li ><a class="text" href="/search/arretes?&q={{q}}#all_text">Arrêtés: {{arretes.count}}</a></li>
                 {% endif %}
                 {% if decisions %}
-                <li ><a class="text" href="/search/decisions?&q={{q}}">Décisions: {{decisions.count}}</a></li>
+                <li ><a class="text" href="/search/decisions?&q={{q}}#all_text">Décisions: {{decisions.count}}</a></li>
                 {% endif %}
             </ul>
           </div>

@@ -24,28 +24,28 @@
       <div class="well">
 		  <ul class="sidebar-nav">
 
-		      <li><a href="/search?&q={{q}}">Tous les textes: {{len_texts}}</a></li>
+		      <li id="all_text"><a href="/search?&q={{q}}#all_text">Tous les textes: {{len_texts}}</a></li>
             <hr>
             {% if lois %}
-            <li ><a href="/search/lois?&q={{q}}">Lois: {{lois.count}}</a></li>
+            <li ><a href="/search/lois?&q={{q}}#all_text">Lois: {{lois.count}}</a></li>
             {% endif %}
             <div class="current">
               <li> Ordonnances: {{ordonnances.count}} </li>
             </div>
             {% if decrets_p %}
-            <li ><a href="/search/decrets-presidentiels?&q={{q}}">Décrets présidentiels: {{decrets_p.count}}</a></li>
+            <li ><a href="/search/decrets-presidentiels?&q={{q}}#all_text">Décrets présidentiels: {{decrets_p.count}}</a></li>
             {% endif %}
             {% if decrets_ex %}
-            <li ><a href="/search/decrets-executifs?&q={{q}}">Décrets exécutifs: {{decrets_ex.count}}</a></li>
+            <li ><a href="/search/decrets-executifs?&q={{q}}#all_text">Décrets exécutifs: {{decrets_ex.count}}</a></li>
             {% endif %}
             {% if arre_int %}
-            <li ><a href="/search/arretes-interministeriels?&q={{q}}">Arrêtés interministériels: {{arre_int.count}}</a></li>
+            <li ><a href="/search/arretes-interministeriels?&q={{q}}#all_text">Arrêtés interministériels: {{arre_int.count}}</a></li>
             {% endif %}
             {% if arretes %}
-            <li ><a href="/search/arretes?&q={{q}}">Arrêtés: {{arretes.count}}</a></li>
+            <li ><a href="/search/arretes?&q={{q}}#all_text">Arrêtés: {{arretes.count}}</a></li>
             {% endif %}
             {% if decisions %}
-            <li ><a href="/search/decisions?&q={{q}}">Décisions: {{decisions.count}}</a></li>
+            <li ><a href="/search/decisions?&q={{q}}#all_text">Décisions: {{decisions.count}}</a></li>
             {% endif %}
         </ul>
        </div>
